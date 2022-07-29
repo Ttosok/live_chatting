@@ -1,0 +1,244 @@
+<%- include('profile') %> 
+        <section class="user_short_collect">
+            <div>
+                <div class="user_collect">
+                    <div class="button icon clicked">
+                        <a href="/live/profile/<%= data.name %>">About</a>
+                    </div>
+                    <div class="button icon">
+                        <a href="/live/profile/<%= data.name %>/about">profile detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contain note_blog_contain">
+            <div class="basic_profile list">
+                <div>
+                    <div class="basic_header">
+                        <h3 class="text-h">giới thiệu</h3>
+                    </div>
+                    <div class="basic_body">
+                        <ul class="basic_body-1lv">
+                            <% if (locals.profile) { %>
+                                <% if (profile.bio) { %>
+                                    <li class="basic_body-2lv list" id="location">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="globe"></ion-icon>
+                                            <h3>Vị trí</h3>
+                                        </div>
+                                        <p class="basic_body-txt"><%= profile.location %></p>
+                                    </li>
+                                <% } %>
+                            <% } %>
+                            <li class="basic_body-2lv list" id="status">
+                                <div class="basic_body-folder list">
+                                    <ion-icon name="person"></ion-icon>
+                                    <h3>Tâm trạng</h3>
+                                </div>
+                                <p class="basic_body-txt ">
+                                    <% if (locals.profile) { %>
+                                        <%= profile.status %>
+                                    <% } %>
+                                </p>
+                            </li>
+                            <% if (locals.profile) { %>
+                                <% if (profile.bio) { %>
+                                    <li class="basic_body-2lv list long" id="bio">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="book"></ion-icon>
+                                            <h3>bio</h3>
+                                        </div>
+                                        <p class="basic_body-txt"><%=profile.bio %> adding alot of into about talking of themself</p>
+                                    </li>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+
+                <% if (locals.profile) { %>
+                    <% if (profile.social) { %>
+                        <div>
+                            <div class="basic_header">
+                                <h3 class="text-h">social</h3>
+                            </div>
+                            <div class="basic_body">
+                                <ul class="basic_body-1lv">
+                                    <% if (profile.social.youtube) { %>
+                                        <li class="basic_body-2lv list" id="youtube">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="logo-youtube"></ion-icon>
+                                                <h3>youtube</h3>
+                                            </div>
+                                            <p class="basic_body-txt"> <a href="<%= profile.social.youtube  %>" class="link"><%= profile.social.youtube %></a></p>
+                                        </li>
+                                    <% } %>
+                                    <% if (profile.social.twitter) { %>
+                                        <li class="basic_body-2lv list" id="twitter">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="logo-twitter"></ion-icon>
+                                                <h3>twitter</h3>
+                                            </div>
+                                            <p class="basic_body-txt"><a href="<%= profile.social.twitter %>" class="link"><%= profile.social.twitter %></a></p>
+                                        </li>
+                                    <% } %>
+                                    <% if (profile.social.facebook) { %>
+                                        <li class="basic_body-2lv list" id="facebook">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="logo-facebook"></ion-icon>
+                                                <h3>facebook</h3>
+                                            </div>
+                                            <p class="basic_body-txt"><a href="<%= profile.social.facebook %>" class="link"><%= profile.social.facebook %></a></p>
+                                        </li>
+                                    <% } %>
+                                    <% if (profile.social.linkin) { %>
+                                        <li class="basic_body-2lv list" id="linkin">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="logo-linkedin"></ion-icon>
+                                                <h3>linkin</h3>
+                                            </div>
+                                            <p class="basic_body-txt"><a href="<%= profile.social.linkin %>" class="link"><%= profile.social.linkin %></a></p>
+                                        </li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+
+                <% if (locals.profile) { %>
+                    <% if (profile.education.length > 0) { %>
+                        <div>
+                            <div class="basic_header">
+                                <h3 class="text-h">education</h3>
+                            </div>
+                            <% profile.education.forEach( edu => { %>
+                                <div class="basic_body">
+                                    <ul class="basic_body-1lv">
+                                        <li class="basic_body-2lv list" id="school">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="business"></ion-icon>
+                                                <h3>school</h3>
+                                            </div>
+                                            <p class="basic_body-txt"><%= edu.school %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="degree">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="school"></ion-icon>
+                                                <h3>degree</h3>
+                                            </div>
+                                            <p class="basic_body-txt"><%= edu.degree  %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="fieldofstudy">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="bulb"></ion-icon>
+                                                <h3>field</h3>
+                                            </div>
+                                            <p class="basic_body-txt"><%= edu.fieldofstudy %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="date">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="calendar"></ion-icon>
+                                                <h3>date</h3>
+                                            </div>
+                                            <p class="basic_body-txt">
+                                                <% if (edu.current === false) { %>
+                                                    <%= new Date(edu.from).toLocaleDateString() %> - <%= new Date(edu.to).toLocaleDateString() %>
+                                                <% }else{ %>
+                                                    <%=  new Date(edu.from).toLocaleDateString()%> - <%=new Date(Date.now()).toLocaleDateString() %>
+                                                <% } %>
+                                            </p>
+                                        </li>
+                                        <% if (edu.description) { %>
+                                            <li class="basic_body-2lv list long" id="description">
+                                                <div class="basic_body-folder list">
+                                                    <ion-icon name="book"></ion-icon>
+                                                    <h3>description</h3>
+                                                </div>
+                                                <p class="basic_body-txt"><%= edu.description %></p>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+            <div class="note_blog">
+                <div class="note_blog_header">
+                    <h3 class="text-h">Bai viet</h3>
+                    <ul class="list">
+                       <li class="icon note-only">
+                            <p>note-only</p>
+                       </li> 
+                       <li class="icon blog-only">
+                            <p>blog-only</p>
+                       </li> 
+                    </ul>
+                </div>
+                <div class="note_blog_body">
+                    <ul class="list">
+                    <% if (locals.profile) { %>
+                        <% if (profile.note) { %>
+                        <%  profile.note.forEach(txt => { %>
+                                <li class="note_contrain" id="<%= txt._id %>">
+                                    <div class="note_header list">
+                                        <div class="flex-middle">
+                                            <p class="time"><%= new Date(txt.date).toLocaleString() %></p>
+                                        </div>
+                                        <div class="note_setting">
+                                            <ion-icon name="more"></ion-icon>
+                                            <ul class="list note_setting-cotrain">
+                                                <li class="note_setting-Edit">
+                                                    <p> Edit</p>
+                                                    <div class="Note_popup">
+                                                        <div class="popup_content list">
+                                                            <form class="Note_group collect_pop-profile">
+                                                                <div>
+                                                                    <div class="Note_header">
+                                                                        <h3 class="text-h">Note Edit</h3>
+                                                                    </div>
+                                                                    <div class="Note_area list">
+                                                                        <p class="text-h flex-middle">Note :</p>
+                                                                        <textarea class="Note_text"><%= txt.text %></textarea>
+                                                                    </div>
+                                                                    <div class="click_Note">
+                                                                        <button class="icon" type="submit">
+                                                                            <ion-icon name="send"></ion-icon>
+                                                                            <span>post</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <button type="submit" style="visibility: hidden;"></button>
+                                                            </form>
+                                                            <span class="close">x</span> 
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="note_setting-Delete">
+                                                    <p> Delete</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="note_body">
+                                        <div class="note_area">
+                                            <p class="note-text"><%= txt.text %></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            <% }) %>
+                        <% } %>
+                    <% } %>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src="./../../views/javasciprt/profile.js"></script>
+        <script src="../../../../../../views/javasciprt/_all_needed_event.js"></script>
+        <script src="../../../../../../views/javasciprt/_profile_head.js"></script>
+    </body>
+</html>

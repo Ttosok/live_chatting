@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../../../../../views/img/logo.png">
+        <!-- <meta http-equiv= "X-AU-Compatible"> -->
+        <link rel="stylesheet" href="../../../../../../views/css/__Edit_blog.css" type="text/css">
+        <title>Edit of blog</title>
+    </head>
+    <body>
+                <div class="blog_contrain" id="<%= blog._id %>">
+                    <div class="blog_info">
+                        <div class="blog_header">
+                            <div class="list user-info">
+                                <div class="avatar">
+                                    <img src="<%= blog.avatar %> " alt="user avatar">
+                                </div>
+                                    <p class="flex-middle text name"><%= blog.name %></p>
+                            </div>
+                            <div class="flex-middle list user-time">
+                                <h3 class="flex-middle text time"><%= new Date(blog.date).toLocaleString()%></h3>
+                            </div>
+                        </div>
+                        <div class="list blog_body">
+                            <div class="Edit_body_l1 list" id="text">
+                                <div class="Edit_area-folder">
+                                    <h3>text</h3>
+                                    <p class="text_error"></p>
+                                </div>
+                                <textarea class="Edit_area-area flex-middle" required><%=blog.text%></textarea>
+                            </div>
+                            <div class="Edit_body_l1 list" id="picture">
+                                <div class="Edit_area-folder">
+                                    <h3>picture</h3>
+                                    <p class="img_error"></p>
+                                </div>
+                            </div>
+                            <div class="blog_img">
+                                <% blog.picture.forEach(img => { %>
+                                    <img src="<%= img.img%>" alt="img posted">
+                                    <% }) %>
+                            </div>
+                            <div class="Edit_area-button list">
+                                <input  type="file"></input>
+                                <button type="button">Delete last imagine</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="Edit_area-blog" type="submit">Edit</button>
+                </div>
+
+    </body>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="../../../../../../views/javasciprt/_editBlog.js"></script>
+</html>

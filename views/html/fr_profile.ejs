@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../../../../../views/img/logo.png">
+        <!-- <meta http-equiv= "X-AU-Compatible"> -->
+        <link rel="stylesheet" href="../../../../../../views/css/profile.css" type="text/css">
+        <link rel="stylesheet" href="../../../../../../views/css/chat.css" type="text/css">
+        <script src="/socket.io/socket.io.js"></script>
+        <title>Blog event ver1.3</title>
+    </head>
+    <body>
+        <%- include('_header_chat')  %> 
+        <main class="flex_mid_none-border flex-mid">
+            <section class="user_short-contain contain">
+                <div class="user_short-info">
+                    <div class="user_info">
+                        <div class="avatar_big">
+                            <img src="<%= friend.avatar %> " alt="user"/>
+                        </div>
+                        <div class="content_short">
+                            <div class="short_info">
+                                <div class="name-short">
+                                    <h1><%= friend.name %></h1> 
+                                </div>
+                                <div class="nickname-short">
+                                    <% if (locals.fr_profile) { %>
+                                        <h3><%= fr_profile.nick_name %></h3> 
+                                    <% } %>
+                                </div>
+                                <div class="friend-short">
+                                    <%= friend.friends.length %> bạn bè
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content_setting">
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+            </section>
+        

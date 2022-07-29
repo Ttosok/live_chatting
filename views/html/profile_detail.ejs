@@ -1,0 +1,702 @@
+<%- include('profile') %> 
+        <section class="user_short_collect">
+            <div>
+                <div class="user_collect">
+                    <div class="button icon">
+                        <a href="/live/profile/<%= data.name %>">About</a>
+                    </div>
+                    <div class="button icon clicked">
+                        <a href="/live/profile/<%= data.name %>/about">profile detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class= "profile_detail contain">
+            <div class="profile_setting list">
+                <div class="icon profile_Create">
+                    <p>Create profile</p>
+                    <div class="Create_popup">
+                        <div class="popup_content list">
+                                <% if (!locals.profile) { %>
+                                    <form class="profile_group">
+                                        <div>
+                                            <h3 class="text-h">Create</h3>
+                                            <div class="basic_header">
+                                                <h3 class="text-h">gioi thieu</h3>
+                                            </div>
+                                            <div class="profileDetail_body">
+                                                <ul class="profileDetail_body-1lv">
+                                                    <li class="profileDetail_body-2lv list" id="location">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>Vị trí</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" placeholder="nhập vị trí" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="nick_name">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>Tên phụ</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" placeholder="nhập tên phụ" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="status">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>Tâm trạng</h3>
+                                                            <p class="errors errors-status"></p>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" placeholder="nhập trạng thái" required value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list long" id="bio">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>bio</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt" value="">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- education -->
+                                        <div>
+                                            <div class="basic_header">
+                                                <h3 class="text-h">education</h3>
+                                            </div>
+                                            <div class="profileDetail_body">
+                                                <ul class="profileDetail_body-1lv">
+                                                    <li class="profileDetail_body-2lv list" id="school">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>school</h3>
+                                                            <p class="errors errors-school"></p>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" placeholder="nhập trường" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="degree">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>degree</h3>
+                                                            <p class="errors errors-degree"></p>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" placeholder="nhập khoá" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="fieldofstudy">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>field</h3>
+                                                            <p class="errors errors-fieldofstudy"></p>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" placeholder="nhập chuyên ngành" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="date">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>date</h3>
+                                                            <p class="errors errors-date"></p>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" id="from" type="date" placeholder="add an start day" value="">
+                                                        <input class="profileDetail_body-txt flex-middle" id="to" type="date" placeholder="add an end day" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list long" id="description">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>description</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt" value="">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- social -->
+                                        <div>
+                                            <div class="basic_header">
+                                                <h3 class="text-h">social</h3>
+                                            </div>
+                                            <div class="profileDetail_body">
+                                                <ul class="profileDetail_body-1lv">
+                                                    <li class="profileDetail_body-2lv list" id="youtube">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>youtube</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle"  value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="twitter">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>twitter</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle"  value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="facebook" >
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>facebook</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle" value="">
+                                                    </li>
+                                                    <li class="profileDetail_body-2lv list" id="linkin">
+                                                        <div class="profileDetail_body-folder list">
+                                                            <h3>linkin</h3>
+                                                        </div>
+                                                        <input class="profileDetail_body-txt flex-middle"  value="">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <button type="submit" style="visibility: hidden;">Create</button>
+                                    </form>
+                                <% } %>
+                                <span class="close">x</span>
+                            </div>
+                    </div>
+                </div>
+                <div class="icon profile_Edit">
+                    <p>Edit profile</p>
+                    <div class="Edit_popup">
+                        <div class="popup_content list">
+                            <% if (locals.profile) { %>
+                                <form class="profile_group">
+                                    <div>
+                                        <h3 class="text-h">Edit</h3>
+                                        <div class="basic_header">
+                                            <h3 class="text-h">gioi thieu</h3>
+                                        </div>
+                                        <div class="profileDetail_body">
+                                            <ul class="profileDetail_body-1lv">
+                                                <li class="profileDetail_body-2lv list" id="location">
+                                                    <div class="profileDetail_body-folder list">
+                                                        <h3>Vị trí</h3>
+                                                    </div>
+                                                    <% if (profile.location) { %>
+                                                        <input class="profileDetail_body-txt" value="<%= profile.location %>">
+                                                    <% }else { %>
+                                                        <input class="profileDetail_body-txt" value="">
+                                                    <% } %>
+                                                </li>
+                                                <li class="profileDetail_body-2lv list" id="nick_name">
+                                                    <div class="profileDetail_body-folder list">
+                                                        <h3>Tên phụ</h3>
+                                                    </div>
+                                                    <% if (profile.nick_name) { %>
+                                                        <input class="profileDetail_body-txt" value="<%= profile.nick_name %>">
+                                                    <% }else { %>
+                                                        <input class="profileDetail_body-txt" value="">
+                                                    <% } %>
+                                                </li>
+                                                <li class="profileDetail_body-2lv list" id="status">
+                                                    <div class="profileDetail_body-folder list">
+                                                        <h3>Tâm trạng</h3>
+                                                    </div>
+                                                    <input class="profileDetail_body-txt flex-middle" value="<%= profile.status %>">
+                                                </li>
+                                                <li class="profileDetail_body-2lv list long" id="bio">
+                                                    <div class="profileDetail_body-folder list">
+                                                        <h3>bio</h3>
+                                                    </div>
+                                                    <% if (profile.bio) { %>
+                                                    <input class="profileDetail_body-txt" value="<%= profile.bio %>">
+                                                    <% }else { %>
+                                                        <input class="profileDetail_body-txt" value="">
+                                                    <% } %>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <% if (profile.education.length > 0) { %>
+                                        <div>
+                                            <div class="basic_header">
+                                                <h3 class="text-h">education</h3>
+                                            </div>
+                                            <% profile.education.forEach( edu => { %>
+                                                <div class="profileDetail_body Education" id="<%= edu._id  %>">
+                                                    <ul class="profileDetail_body-1lv">
+                                                        <li class="profileDetail_body-2lv list" id="school">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>school</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value="<%= edu.school  %>">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="degree">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>degree</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value="<%= edu.degree %>">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="fieldofstudy">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>field</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value="<%= edu.fieldofstudy %>">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="date">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>date</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" id="from" type="date" value="<%= new Date(edu.from).getFullYear()%>-<% if (new Date(edu.from).getMonth() < 10) { %>0<% } %><%= new Date(edu.from).getMonth() %>-<% if (new Date(edu.from).getDate() < 10) { %>0<% } %><%= new Date(edu.from).getDate() %>">
+                                                            <% if (edu.current) { %>
+                                                                <input class="profileDetail_body-txt flex-middle" id="to" type="date" value="<%= new Date(Date.now()).getFullYear()%>-<% if (new Date(Date.now()).getMonth() < 10) { %>0<% } %><%= new Date(Date.now()).getMonth() %>-<% if (new Date(Date.now()).getDate() < 10) { %>0<% } %><%= new Date(Date.now()).getDate() %>">
+                                                            <% }else{ %>
+                                                                <input class="profileDetail_body-txt flex-middle" id="to" type="date" value="<%= new Date(edu.from).getFullYear()%>-<% if (new Date(edu.to).getMonth() < 10) { %>0<% } %><%= new Date(edu.to).getMonth() %>-<% if (new Date(edu.to).getDate() < 10) { %>0<% } %><%= new Date(edu.to).getDate() %>">
+                                                            <% } %> 
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list long" id="description">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>description</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt" value="<%=  %> adding alot of into about talking of school">
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            <% }) %>
+                                        </div>
+                                    <% } %>
+                
+                                    <% if (profile.social) { %>
+                                        <div>
+                                            <div class="basic_header">
+                                                <h3 class="text-h">social</h3>
+                                            </div>
+                                            <div class="profileDetail_body Social">
+                                                <ul class="profileDetail_body-1lv">
+                                                    <% if (profile.social.youtube) { %>
+                                                        <li class="profileDetail_body-2lv list" id="youtube">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>youtube</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value="<%= profile.social.youtube %>">
+                                                        </li>
+                                                    <% } %>
+                                                    <% if (profile.social.twitter) { %>
+                                                        <li class="profileDetail_body-2lv list" id="twitter">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>twitter</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value="<%= profile.social.twitter %>">
+                                                        </li>
+                                                    <% } %>
+                                                    <% if (profile.social.facebook) { %>
+                                                        <li class="profileDetail_body-2lv list" id="facebook" >
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>facebook</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value="<%= profile.social.facebook %>">
+                                                        </li>
+                                                    <% } %>
+                                                    <% if (profile.social.linkin) { %>
+                                                        <li class="profileDetail_body-2lv list" id="linkin">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>linkin</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" value=" <%= profile.social.linkin %>">
+                                                        </li>
+                                                    <% } %>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                    <button type="submit" style="visibility: hidden;">Edit</button>
+                                </form>
+                            <% } %>
+                                <span class="close">x</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile_group list">
+                <div>
+                    <div class="basic_header">
+                        <h3 class="text-h">gioi thieu</h3>
+                    </div>
+                    <div class="basic_body">
+                        <ul class="basic_body-1lv">
+                            <% if (locals.profile) { %>
+                                <% if (profile.location) { %>
+                                    <li class="basic_body-2lv list" id="location">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="globe"></ion-icon>
+                                            <h3>Vị trí</h3>
+                                        </div>
+                                        <!-- <div id="location_setting" class="list">
+                                            <p class="basic_body-txt flex-middle"><%=  %> Chưa có</p>
+                                            <div class="setting_location-Edit icon Edit">
+                                                Edit
+                                            </div>
+                                            <div class="setting_location-Delete icon Delete">
+                                                Delete
+                                            </div>
+                                        </div> -->
+                                        <p class="basic_body-txt flex-middle"><%= profile.location %></p>
+                                    </li>
+                                    <% } %>
+                                <% } %>
+                                <% if (locals.profile) { %>
+                                    <% if (profile.status) { %>
+                                        <li class="basic_body-2lv list" id="status">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="person"></ion-icon>
+                                                <h3>Tâm trạng</h3>
+                                            </div>
+                                            <!-- <div id="status_setting" class="list">
+                                                <p class="basic_body-txt flex-middle"><%=  %> Không rõ</p>
+                                                <div class="setting_status-Edit icon Edit">
+                                                    Edit
+                                                </div>
+                                            </div> -->
+                                            <p class="basic_body-txt flex-middle"><%= profile.status %></p>
+                                        </li>
+                                    <% } %>
+                                <% } %>
+                            <% if (locals.profile) { %>
+                                <% if (profile.bio) { %>
+                                    <li class="basic_body-2lv list long" id="bio">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="book"></ion-icon>
+                                            <h3>bio</h3>
+                                        </div>
+                                        <!-- <div id="bio_setting" class="list">
+                                            <div class="setting_bio-Edit icon Edit">
+                                                Edit
+                                            </div>
+                                            <div class="setting_bio-Delete icon Delete">
+                                                Delete
+                                            </div>
+                                        </div> -->
+                                        <p class="basic_body-txt"><%= profile.bio %></p>
+                                    </li>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="basic_header list">
+                        <h3 class="text-h">social</h3>
+                        <div class="icon">
+                            <h5 id="Social_Create">Thêm</h5>
+                            <div class="Social_Create_popup">
+                                <div class="popup_content list">
+                                    <% if (locals.profile) { %>
+                                        <form class="profile_group">
+                                            <div>
+                                                <div class="basic_header">
+                                                    <h3 class="text-h">social</h3>
+                                                </div>
+                                                <div class="profileDetail_body">
+                                                    <ul class="profileDetail_body-1lv">
+                                                        <li class="profileDetail_body-2lv list" id="youtube">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>youtube</h3>
+                                                            </div>
+                                                            <% if (profile.social.youtube) { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="<%= profile.social.youtube %>">
+                                                            <% } else { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="">
+                                                            <% } %> 
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="twitter">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>twitter</h3>
+                                                            </div>
+                                                            <% if (profile.social.twitter) { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="<%= profile.social.twitter %>">
+                                                            <% } else { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="">
+                                                            <% } %> 
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="facebook" >
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>facebook</h3>
+                                                            </div>
+                                                            <% if (profile.social.facebook) { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="<%= profile.social.facebook %>">
+                                                            <% } else { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="">
+                                                            <% } %> 
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="linkin">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>linkin</h3>
+                                                            </div>
+                                                            <% if (profile.social.linkin) { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="<%= profile.social.linkin %>">
+                                                            <% } else { %>
+                                                                <input class="profileDetail_body-txt flex-middle"  value="">
+                                                            <% } %> 
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <button type="submit" style="visibility: hidden;">Adding</button>
+                                        </form>
+                                    <% } %> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% if (locals.profile) { %>
+                    <% if (profile.social) { %>
+                        <div class="basic_body">
+                            <ul class="basic_body-1lv">
+                                <% if (profile.social.youtube) { %>
+                                    <li class="basic_body-2lv list" id="youtube">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-youtube"></ion-icon>
+                                            <h3>youtube</h3>
+                                        </div>
+                                        <!-- <div id="youtube_setting" class="list">
+                                            <p class="basic_body-txt flex-middle">
+                                                <a href="#" class="link">
+                                                    <%=  %> will add youtube name here
+                                                </a>
+                                            </p>
+                                            <div class="setting_youtube-Edit icon Edit">
+                                                Edit
+                                            </div>
+                                            <div class="setting_youtube-Delete icon Delete">
+                                                Delete
+                                            </div>
+                                        </div> -->
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= profile.social.youtube  %>" class="link">
+                                                <%= profile.social.youtube  %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                                <% if (profile.social.twitter) { %>
+                                    <li class="basic_body-2lv list" id="twitter">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-twitter"></ion-icon>
+                                            <h3>twitter</h3>
+                                        </div>
+                                        <!-- <div id="twitter_setting" class="list">
+                                            <p class="basic_body-txt flex-middle">
+                                                <a href="#" class="link">
+                                                    <%=  %>  will add twitter name here
+                                                </a>
+                                            </p>
+                                            <div class="setting_twitter-Edit icon Edit">
+                                                Edit
+                                            </div>
+                                            <div class="setting_twitter-Delete icon Delete">
+                                                Delete
+                                            </div>
+                                        </div> -->
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= profile.social.twitter %>" class="link">
+                                                <%= profile.social.twitter %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                                <% if (profile.social.facebook) { %>
+                                    <li class="basic_body-2lv list" id="facebook">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-facebook"></ion-icon>
+                                            <h3>facebook</h3>
+                                        </div>
+                                        <!-- <div id="facebook_setting" class="list">
+                                            <p class="basic_body-txt flex-middle">
+                                                <a href="#" class="link">
+                                                    <%=  %> will add facebook name here
+                                                </a>
+                                            </p>
+                                            <div class="setting_facebook-Edit icon Edit">
+                                                Edit
+                                            </div>
+                                            <div class="setting_facebook-Delete icon Delete">
+                                                Delete
+                                            </div>
+                                        </div> -->
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= profile.social.facebook %>" class="link">
+                                                <%= profile.social.facebook %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                                <% if (profile.social.linkin) { %>
+                                    <li class="basic_body-2lv list" id="linkin">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-linkedin"></ion-icon>
+                                            <h3>linkin</h3>
+                                        </div>
+                                        <!-- <div id="linkin_setting" class="list">
+                                            <p class="basic_body-txt flex-middle">
+                                                <a href="#" class="link">
+                                                    <%=  %>   will add linkin name here
+                                                </a>
+                                            </p>
+                                            <div class="setting_linkin-Edit icon Edit">
+                                                Edit
+                                            </div>
+                                            <div class="setting_linkin-Delete icon Delete">
+                                                Delete
+                                            </div>
+                                        </div> -->
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= profile.social.linkin %>" class="link">
+                                                <%= profile.social.linkin %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                </div>
+                    <% } %>
+                <% } %>
+
+                <div>
+                    <div class="basic_header list">
+                        <h3 class="text-h">education</h3>
+                        <div class="icon">
+                            <h5 id="Education_ArrayCreate">Tạo thêm</h5>
+                            <div class="Education_popup">
+                                <div class="popup_content list">
+                                    <% if (locals.profile) { %>
+                                        <form class="profile_group">
+                                            <div>
+                                                <div class="basic_header">
+                                                    <h3 class="text-h">education</h3>
+                                                </div>
+                                                <div class="profileDetail_body">
+                                                    <ul class="profileDetail_body-1lv">
+                                                        <li class="profileDetail_body-2lv list" id="school">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>school</h3>
+                                                                <p class="errors errors-school"></p>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" placeholder="nhập trường" value="">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="degree">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>degree</h3>
+                                                                <p class="errors errors-degree"></p>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" placeholder="nhập khoá" value="">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="fieldofstudy">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>field</h3>
+                                                                <p class="errors errors-fieldofstudy"></p>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" placeholder="nhập chuyên ngành" value="">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list" id="date">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>date</h3>
+                                                                <p class="errors errors-date"></p>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt flex-middle" id="from" type="date" placeholder="add an start day" value="">
+                                                            <input class="profileDetail_body-txt flex-middle" id="to" type="date" placeholder="add an end day" value="">
+                                                        </li>
+                                                        <li class="profileDetail_body-2lv list long" id="description">
+                                                            <div class="profileDetail_body-folder list">
+                                                                <h3>description</h3>
+                                                            </div>
+                                                            <input class="profileDetail_body-txt" value="">
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <button type="submit" style="visibility: hidden;">Adding</button>
+                                        </form>
+                                    <% } %> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% if (locals.profile) { %>
+                        <% if (profile.education.length > 0) { %>
+                            <% profile.education.forEach( edu => { %>
+                                <div class="basic_body" id="<%= edu._id %>">
+                                    <ul class="basic_body-1lv">
+                                        <li class="basic_body-2lv list" id="school">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="business"></ion-icon>
+                                                <h3>school</h3>
+                                            </div>
+                                            <!-- <div id="school_setting" class="list">
+                                                <p class="basic_body-txt flex-middle"><%=  %> will add school name here</p>
+                                                <div class="setting_school-Edit icon Edit">
+                                                    Edit
+                                                </div>
+                                            </div> -->
+                                            <p class="basic_body-txt flex-middle"><%= edu.school %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="degree">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="school"></ion-icon>
+                                                <h3>degree</h3>
+                                            </div>
+                                            <!-- <div id="degree_setting" class="list">
+                                                <p class="basic_body-txt flex-middle"><%=  %> will add degree name here</p>
+                                                <div class="setting_degree-Edit icon Edit">
+                                                    Edit
+                                                </div>
+                                            </div> -->
+                                            <p class="basic_body-txt flex-middle"><%= edu.degree %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="fieldofstudy">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="bulb"></ion-icon>
+                                                <h3>field</h3>
+                                            </div>
+                                            <!-- <div id="fieldofstudy_setting" class="list">
+                                                <p class="basic_body-txt flex-middle"><%=  %> will add fieldofstudy name here</p>
+                                                <div class="setting_fieldofstudy-Edit icon Edit">
+                                                    Edit
+                                                </div>
+                                            </div> -->
+                                            <p class="basic_body-txt flex-middle"><%= edu.fieldofstudy %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="date">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="calendar"></ion-icon>
+                                                <h3>date</h3>
+                                            </div>
+                                            <!-- <div id="date_setting" class="list">
+                                                <p class="basic_body-txt flex-middle">
+                                                    <% if (edu) { %>
+                                                        <%=  %>
+                                                    <% } %> will add date time name here
+                                                </p>
+                                                <div class="setting_date-Edit icon Edit">
+                                                    Edit
+                                                </div>
+                                            </div> -->
+                                            <p class="basic_body-txt flex-middle">
+                                                <% if (edu.current === false) { %>
+                                                    <%= new Date(edu.from).toLocaleDateString() %> - <%= new Date(edu.to).toLocaleDateString() %>
+                                                <% }else{ %>
+                                                    <%=  new Date(edu.from).toLocaleDateString()%> - <%=new Date(Date.now()).toLocaleDateString() %>
+                                                <% } %>
+                                                 
+                                            </p>
+                                        </li>
+                                        <% if (edu.description) { %>
+                                            <li class="basic_body-2lv list long" id="description">
+                                                <div class="basic_body-folder list">
+                                                    <ion-icon name="book"></ion-icon>
+                                                    <h3>description</h3>
+                                                </div>
+                                                <!-- <div id="description_setting" class="list">
+                                                    <div class="setting_description-Edit icon Edit">
+                                                        Edit
+                                                    </div>
+                                                    <div class="setting_description-Delete icon Delete">
+                                                        Delete
+                                                    </div>
+                                                </div> -->
+                                                <p class="basic_body-txt"><%= edu.description %></p>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                <% } %>
+                
+            </div>
+        </section>
+    </main>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src="../../../../../../views/javasciprt/profile_detail.js"></script>
+        <script src="../../../../../../views/javasciprt/_all_needed_event.js"></script>
+        <script src="../../../../../../views/javasciprt/_profile_head.js"></script>
+    </body>
+</html>

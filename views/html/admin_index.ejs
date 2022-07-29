@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../../../../../views/img/logo.png">
+        <!-- <meta http-equiv= "X-AU-Compatible"> -->
+        <link rel="stylesheet" href="../../../../../../views/css/_leftAdmin.css" type="text/css">
+        <link rel="stylesheet" href="../../../../../../views/css/_rightBase.css" type="text/css">
+        <title>Admin power</title>
+    </head>
+    <body>
+        <%- include('_leftBar') %> 
+        <div class="site_right">
+            <div class="right_head">
+                <div class="searching_engi">
+                    <label>
+                        <input type="text" placeholder="tim kiem">
+                        <ion-icon name="search"></ion-icon>
+                    </label>
+                </div>
+            </div>
+            <div class="right_body">
+                <section class="user_contain">
+                    <div>
+                        <div class="user_list">
+                            <div class="user_list_head">
+                                <ul class="list">
+                                    <li>Tài khoản</li>
+                                    <li>email</li>
+                                    <li>avatar</li>
+                                    <li colspan="2">cài đặt</li>
+                                </ul>
+                            </div>
+                            <div class="user_list_body">
+                                <% usList.forEach( data => { %>
+                                    <% if (data.name === "Admin") { %>
+                                     
+                                    <% }else{ %>
+                                    <ul class="list user_info">
+                                        <li class="user_name"><%= data.name %></li>
+                                        <li class="email_user"><%= data.email %></li>
+                                        <li class="imgs"><img src="<%= data.avatar %>"  alt="img user"/></li>
+                                        <li>
+                                            <span class="edit">edit</span>
+                                            <span class="delete">delete</span>
+                                        </li>
+                                    </ul>
+                                    <div class="user_info-popUp">
+                                        <div class="popup_content list">
+                                            <form class="User_group" id="<%= data._id %>">
+                                                <div>
+                                                    <div class="User_header">
+                                                        <h3 class="text-h">User Edit</h3>
+                                                    </div>
+                                                    <div class="User_area">
+                                                        <ul class="User_body">
+                                                            <li class="User_body_l1 list" id="email">
+                                                                <div class="User_area-folder">
+                                                                    <h3>Email</h3>
+                                                                    <p class="email_error"></p>
+                                                                </div>
+                                                                <input class="User_area-txt flex-middle" type="email" placeholder="nhập email mới" value="<%= data.email %>">
+                                                            </li>
+                                                            <li class="User_body_l1 list" id="Oldpassword">
+                                                                <div class="User_area-folder">
+                                                                    <h3>Old Password</h3>
+                                                                    <p class="Oldpass_error"></p>
+                                                                </div>
+                                                                <input class="User_area-txt flex-middle" type="password" value="">
+                                                            </li>
+                                                            <li class="User_body_l1 list" id="Newpassword">
+                                                                <div class="User_area-folder">
+                                                                    <h3>New Password</h3>
+                                                                    <p class="Newpass_error"></p>
+                                                                </div>
+                                                                <input class="User_area-txt flex-middle" type="password" value="">
+                                                            </li>
+                                                            <li class="User_body_l1 list" id="avatar">
+                                                                <div class="User_area-folder">
+                                                                    <h3>Avatar</h3>
+                                                                </div>
+                                                                <img class="user_img-edit" src="<%= data.avatar %> ">
+                                                                <input type ="file" class ="img_select" accept="image/*" />
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" style="visibility: hidden;"></button>
+                                            </form>
+                                            <span class="close">x</span>
+                                        </div>
+                                    </div>
+                                    <% } %> 
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src="../../../../../../views/javasciprt/admin_user.js"></script>
+    </body>
+</html>

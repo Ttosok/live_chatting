@@ -1,0 +1,26 @@
+{
+  "name": "17_5_22",
+  "version": "1.0.0",
+  "description": "live chatting ver 1.3",
+  "main": "index.js",
+  "scripts": {
+    "live": "nodemon server"
+  },
+  "keywords": [
+    "data"
+  ],
+  "author": "ttosok",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.3.3",
+    "slugify": "^1.6.5",
+    "socket.io": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

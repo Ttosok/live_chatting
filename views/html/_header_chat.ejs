@@ -1,0 +1,62 @@
+<header class="index_fixed">
+    <div class="header_holder">
+        <a href="/live/blog/<%= data.name %>" class="list logo_holder">
+            <img src="../../../../../views/img/logo.png" alt="logo"/>
+            <h3 class="text-h">
+                logo of place
+            </h3>
+        </a>
+        <div class="show-user">
+            <ul class="list header_list">
+                <li class="icon holding_friend">
+                    <button class="avatar">
+                        <img src="<%= data.avatar%>" alt="user"/>
+                    </button> 
+                    <% if (locals.profile) { %>
+                        <h4 class="user-name"><%= profile.nick_name %></h4>
+                    <% }else{ %>
+                        <h4 class="user-name"><%= data.name.slice(0,5) %></h4>
+                    <% } %> 
+                    <% if (data.hold_friend.length > 0) { %>
+                        <div class="fr_ask">
+                            <p><%= data.hold_friend.length %></p>
+                            <ul class="asking list">
+                                <% data.hold_friend.forEach(hf => { %>
+                                    <li class="list hold_fr_info" id="<%= hf.user %>">
+                                         <div class="avatar">
+                                             <img src="<%= hf.avatar%>" alt="user"/>
+                                         </div>
+                                         <p class="text name"><%= hf.name %> </p>
+                                         <div class="fr_choice list">
+                                            <span class="Appect"><ion-icon name="checkmark-circle"></ion-icon></span>
+                                            <span class="Decline"><ion-icon name="close-circle"></ion-icon></span>
+                                         </div>
+                                    </li> 
+                                <% }) %>
+                            </ul>
+                        </div>
+                    <% } %>
+                </li>
+                <li class="icon">
+                    <button class="user-info">
+                        <ion-icon name="settings"></ion-icon>
+                    </button> 
+                    <ul class="user_setting">
+                        <li class="icon">
+                            <a href="/live/blog/<%= data.name %>">blog post</a>
+                        </li>
+                        <li class="icon">
+                            <a href="/live/profile/<%= data.name %>">Profile user</a>
+                        </li>
+                        <li class="icon">
+                            <a href="/chat/<%= data.name %>">Chat room</a>
+                        </li>
+                        <li class="icon">
+                            <a href="/">Thoat</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

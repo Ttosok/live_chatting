@@ -1,0 +1,349 @@
+textarea:focus{
+    outline: none;
+}
+.btn_poster{
+    position: relative;
+    width: 180px;
+    padding: 2px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    color: #E4E6EB;
+    line-height: 1.2rem;
+    cursor: pointer;
+}
+.btn_poster ion-icon{
+    width: 40%;
+    height: 100%;
+    margin-right: 3px;
+    position: relative;
+    left: 0;
+}
+.btn_poster span{
+    position: relative;
+    bottom: 25%;
+}
+.btn_poster:hover{
+    background-color: #555;
+}
+/* + chat.css */
+/* header */
+.header_holder #searchFriend{
+    width: 35%;
+}
+/* body */
+.flex_mid_none-border{
+    border: none;
+    padding: 0 12.4445%;
+    flex-direction: column;
+    background-color: #111;
+    height: auto;
+}
+/* posting for user */
+.postey_container{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    flex-direction: column;
+}
+.postey-box{
+    width: 100%;
+    height: 100%;
+    padding: 3.755% 3.755% 0 3.755%;;
+}
+.postey-border{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #999;
+    border-radius: 15pt;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #333;
+}
+.Posted_area{
+    width: 100%;
+    height: 80%;
+    padding: 0 15px;
+    overflow-y: auto;
+}
+.Posted_area::-webkit-scrollbar-track{
+	background-color: #e2e2e2;
+}
+.Posted_area::-webkit-scrollbar{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+.Posted_area::-webkit-scrollbar-thumb{
+	border-radius: 100px;
+	background-color: #545454;
+}
+#Posted_text{
+    width: 100%;
+    resize: none;
+    background-color: #555;
+    color: #E4E6EB;
+    font-size: 1.255rem;
+    padding: 0 15px;
+}
+#Posted_text::-webkit-scrollbar{
+    display: none;
+}
+.Posted_img-show{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.Posted_img-show img:only-child{
+    width: 590px;
+    height: 450px;
+}
+.Posted_img-show img:first-child{
+    width: 420px;
+    height: 340px;
+}
+.Posted_img-show img:nth-child(2){
+    width: 410px !important;
+    height: 340px !important;
+}
+.Posted_img-show img:not(:first-child){
+    width: 225px;
+    height: 170px;
+}
+.click_blog{
+    width: 100%;
+    height: 22pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.posted_img #img_select{
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+/* .posted-send{
+
+} */
+
+/* blog show of other */
+.blog_container{
+    display: flex;
+    width: 100%;
+    /* height: 25%; */
+    flex-direction: column;
+    margin-top: 25pt;
+}
+.blog-box{
+    width: 100%;
+    height: 100%;
+    padding: 3.755% 3.755% 0 3.755%;;
+}
+.blog_border{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #999;
+    border-radius: 15pt;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #333;
+    position: relative;
+}
+.user_poster{
+    width: 100%;
+    margin: 5px 0;
+    justify-content: space-between;
+}
+.list.user_poster{
+    padding: 0 15pt;
+    position: relative;
+}
+.user_poster .small-user.flex-left{
+    position: relative;
+}
+.user_poster .small-user.flex-left:hover .portal_blog{
+    display: block;
+}
+.portal_blog{
+    position: absolute;
+    left: 100%;
+    top: 10px;
+    z-index: 101;
+    list-style: none;
+    border: solid 1px #E4E6EB;
+    border-radius: 8px;
+    display: none;
+    overflow: hidden;
+    width: 120pt;
+    max-height: 80pt;
+    background-color: #333;
+}
+.portal_blog li{
+    color: #E4E6EB;
+    text-align: center;
+    padding: 5.733px;
+    width: 100%;
+    border-bottom: solid 1px #E4E6EB;
+    cursor: pointer;
+}
+.portal_blog li:hover{
+    background-color: #E4E6EB;
+    color: #333;
+}
+.time{
+    font-size: 16px !important;
+    text-transform: lowercase !important;
+}
+/* bloger area to show text and img */
+.blog_area{
+    width: 100%;
+    height: 80%;
+    padding: 0 15px;
+    overflow-y: auto;
+    position: relative;
+}
+.blog_area:hover .blog_like{
+    display: block;
+}
+#blog-text{
+    width: 100%;
+    background-color: #555;
+    color: #E4E6EB;
+    font-size: 1.255rem;
+    padding: 3px 15px;
+    min-height: 50px;
+}
+.blog_img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+.blog_area .blog_img img:only-child{
+    width: 590px;
+    height: 450px;
+}
+.blog_img img:first-child{
+    width: 420px;
+    height: 340px;
+}
+.blog_img img:nth-child(2){
+    width: 410px !important;
+    height: 340px !important;
+}
+.blog_img img:not(:first-child){
+    width: 225px;
+    height: 170px;
+}
+/* it show like on the poster*/
+.list.blog_like{
+    position: absolute;
+    width: 60pt;
+    height: 2.5rem;
+    padding: 0 10px;
+    justify-content: space-around;
+    bottom: 2px;
+    right: 15px;
+    background-color: #545454;
+    border-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    display: none;
+}
+.number-like{
+    position: absolute;
+    left: -10px;
+    top: 35%;
+    color: #E4E6EB;
+}
+.blog_like .icon{
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+}
+.blog_like .liked ion-icon{
+    color: green;
+}
+.blog_comment{
+    width: 100%;
+    padding: 0 15px;
+    margin: 25px 0 0 0;
+}
+.blog_border:hover .comment_area{
+    display: block !important;
+}
+.comment_area{
+    width: 100%;
+    display: none;
+}
+#commnet_text{
+    width: 100%;
+    resize: none;
+    background-color: #555;
+    color: #E4E6EB;
+    font-size: 1.255rem;
+    padding: 3px 15px;
+}
+.click_commnet{
+    width: 100%;
+    height: 22pt;
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+}
+.put_area{
+    width: 100%;
+    list-style: none;
+    margin: 15pt 0;
+}
+.put_comment{
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 15px;
+}
+.put_comment .user_comment{
+    position: relative;
+}
+.user_comment .small-user.flex-left{
+    position: relative;
+}
+.put_comment .user_comment .small-user.flex-left:hover .portal_blog{
+    display: block;
+}
+.user_comment{
+    margin: 5px 0;
+    justify-content: space-between;
+}
+.list.user_comment{
+    padding: 0;
+}
+.data_comment{
+    width: 100%;
+    background-color: #555;
+    color: #E4E6EB;
+    padding: 3px 15px;
+    min-height: 35px;
+}
+.commnet_area{
+    overflow-y: auto;
+    position: relative;
+}
+.comment-text{
+    width: 100%;
+    height: 100%;
+    background-color: #555;
+    color: #E4E6EB;
+    font-size: 0.899rem;
+    padding: 5px 15px;
+}

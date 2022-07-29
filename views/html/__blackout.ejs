@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../../../../../views/img/logo.png">
+        <title>Error Server break</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            body{
+                background-color: #555;
+            }
+            .back a{
+                font-size: 26px;
+                color: lightseagreen;
+                text-decoration: none;
+                margin: 0 25px;
+            }
+            .flex_mid{
+                display: flex;
+                height: 100vh;
+                justify-content: center;
+                flex-direction: column;
+            }
+            .middle_room{
+                width: 100%;
+                height: 240px;
+            }
+            .back{
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body class="flex_mid">
+        <div class="middle_room">
+            <div class="back">
+                <p><%= error %></p>
+                <a href="/">back to login page</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../../../../../views/img/logo.png">
+        <!-- <meta http-equiv= "X-AU-Compatible"> -->
+        <link rel="stylesheet" href="../../../../../../views/css/_leftAdmin.css" type="text/css">
+        <link rel="stylesheet" href="../../../../../../views/css/_rightBase.css" type="text/css">
+        <title>Admin power</title>
+    </head>
+    <body>
+        <%- include('_leftBar') %> 
+        <div class="site_right">
+            <div class="right_head">
+                <div class="searching_engi">
+                    <label>
+                        <input type="text" placeholder="tim kiem">
+                        <ion-icon name="search"></ion-icon>
+                    </label>
+                </div>
+            </div>
+            <div class="right_body">
+                <section class="blog_contrain">
+                    <ul class="blog-box">
+                        <% bgList.forEach(poster => { %>
+                            <li class="blog_contain" id="<%= poster._id%>">
+                                <div class="blog_info">
+                                    <div class="blog_header">
+                                        <div class="list user-info">
+                                            <div class="avatar">
+                                                <img src="<%= poster.avatar %>" alt="user avatar">
+                                            </div>
+                                            <p class="flex-middle text name">a1</p>
+                                            <ul class="portal_profile">
+                                                <li class="profile_info">
+                                                    <a href="/control/admin/<%= poster.name %>">
+                                                        info
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="list user-time">
+                                            <h3 class="flex-middle text time"><%=new Date(poster.date).toLocaleString() %></h3>
+                                            <div class="blog_setting">
+                                                <ion-icon name="more"></ion-icon>
+                                                <ul class="list blog_setting-cotrain">
+                                                    <li class="blog_setting-Edit">
+                                                        <a href="/control/blog/<%= poster._id %>/edit">Edit</a></li>
+                                                    <li class="blog_setting-Delete">Delete</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list blog_body">
+                                        <p class="blog-text"><%= poster.text %></p>
+                                        <div class="blog_img">
+                                            <% poster.picture.forEach(img => { %>
+                                                <img src="<%= img.img %>" alt="<%= poster.name %> img"/>
+                                            <% }) %>
+                                        </div>
+                                        <div class="list blog_like">
+                                                <span class="number-like"><%= poster.like.length %></span>
+                                                <ion-icon name="thumbs-up"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blog_comment">
+                                    <ul class="put_comment list">
+                                        <% poster.comments.forEach(comm => { %>
+                                            <li class="comment_info" id="<%= comm._id %>">
+                                                <div class="list commnet_header">
+                                                    <div class="list flex-left comment-info">
+                                                        <div class="avatar">
+                                                            <img src="<%= comm.avatar %>" alt="other user avatar">
+                                                        </div>
+                                                        <p class="flex-middle text name"><%= comm.name %></p>
+                                                        <ul class="portal_profile">
+                                                            <li class="profile_info">
+                                                                <a href="/control/admin/<%= comm._id%>>" style="color: rgb(228, 230, 235);">user info</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="list comment-time">
+                                                        <h3 class="flex-middle  text time"><%=new Date(comm.date).toLocaleString() %></h3>
+                                                        <div class="comment_setting">
+                                                            <ion-icon name="more"></ion-icon>
+                                                            <ul class="list comment_setting-cotrain">
+                                                                <li class="comment_setting-Edit">Edit</li>
+                                                                <li class="comment_setting-Delete">Delete</li>
+                                                            </ul>
+                                                            <div class="commentEdit-popUp">
+                                                                <div class="popup_content list">
+                                                                    <form class="Edit_group" id="<%= comm._id %>">
+                                                                        <div>
+                                                                            <div class="Edit_header">
+                                                                                <h3 class="text-h">Comment Edit</h3>
+                                                                            </div>
+                                                                            <div class="Edit_area">
+                                                                                <ul class="Edit_body">
+                                                                                    <li class="Edit_body_l1 list" id="text">
+                                                                                        <div class="Edit_area-folder">
+                                                                                            <h3>text</h3>
+                                                                                            <p class="text_error"></p>
+                                                                                        </div>
+                                                                                        <textarea class="Edit_area-area flex-middle" required><%= comm.text %></textarea>
+                                                                                    </li>
+                                                                                </ul>
+                                                                                <button class="Edit_area-comment" type="submit">Edit</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                    <span class="close">x</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment_body">
+                                                    <p class="comment-text"><%= comm.text %></p>
+                                                </div>
+                                            </li>
+                                        <% }) %>
+                                    </ul>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </section>
+            </div>  
+        </div>
+    </body>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="../../../../../../views/javasciprt/admin_user.js"></script>
+</html>

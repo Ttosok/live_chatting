@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="../../views/img/logo.png">
+        <title>live_chatting ver1.3</title>
+        <link rel="stylesheet"  href="../../views/css/chat.css" type="text/css"/>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <%- include('_header_chat')  %> 
+        <main>
+            <div class="list friend_holder">
+                <div class="list friendtxt">
+                    <h3 class="text-h flex-left"> Chat</h3>
+                </div>
+                <form id="searchFriend">
+                    <input type="search" autocomplete="" placeholder="Search"/>
+                    <button class="finding-glass"><ion-icon name="search"></ion-icon></button>
+                </form>
+                <ul class="list friend_show">
+                    <% data.friends.forEach( async (fr,index) => { %>
+                        <% for( let i = 0; i < fr_nickname.length; i++ ) { %>
+                            <% if (index === 0) { %>
+                                <li class="list friend-info icon selected" id="<%= fr.user %>">
+                                    <div class="avatar">    
+                                        <% if (fr.avatar != null) { %>
+                                            <img src="<%= fr.avatar%>" alt="user"/>
+                                        <% }else{%>
+                                            <img src="../../views/img/back_ground.jpg" alt="user"/>
+                                        <% } %>
+                                    </div>
+                                    <div class="friend-name">
+                                        <% if (JSON.parse(JSON.stringify(fr_nickname[i].user)) === JSON.parse(JSON.stringify(fr.user))) { %>
+                                            <p class="text name"><%= fr_nickname[i].nick_name %> </p>
+                                            <% break %> 
+                                        <% }else{ %>
+                                            <p class="text name"><%= fr.name %> </p>
+                                            <% break %> 
+                                        <% } %> 
+                                    </div>
+                                </li>
+                                
+                            <% } else { %>
+                                <li class="list friend-info icon" id="<%= fr.user %>">
+                                    <div class="avatar">
+                                        <% if (fr.avatar != null) { %>
+                                            <img src="<%= fr.avatar%>" alt="user"/>
+                                        <% }else{%>
+                                            <img src="../../views/img/back_ground.jpg" alt="user"/>
+                                        <% } %>
+                                    </div>
+                                    <div class="friend-name">
+                                        <% if (JSON.parse(JSON.stringify(fr_nickname[i].user)) === JSON.parse(JSON.stringify(fr.user))) { %>
+                                            <p class="text name"><%= fr_nickname[i].nick_name %> </p>
+                                            <% break %> 
+                                        <% }else{ %>
+                                            <p class="text name"><%= fr.name %> </p>
+                                            <% break %> 
+                                        <% } %> 
+                                    </div>
+                                </li>
+                            <% } %>
+                       <% } %>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="list chat_holder">
+                <div class="list place_chat">
+                    <div class="chat-header">
+                        <div class="list user-head">
+                            <div class="list small-user">
+                                <!-- friend avatar and name -->
+                                <div class="avatar">
+                                    <img src="../../views/img/back_ground.jpg" alt="place holder avatar friend"/>
+                                </div>
+                                <p class="text name">place holder name</p>
+                            </div>
+                            <!-- <div class="chat_group-detail">
+                                <ul class="list chat_group-tool">
+                                    <li class="icon">
+                                        <p>a</p>
+                                    </li>
+                                    <li id="tool-info" class="icon">
+                                        <ion-icon name="information-circle"></ion-icon>
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="list chat_group">
+                        <div class="list chat-show">
+                            <%= //JSON.stringify(chat) //use this to test out sruff get send %> 
+                            <!-- <div class="get_msg flex-left">
+                                <ul class="list get_msg-info">
+                                    <li class="avatar">
+                                        <img src="../../views/img/back_ground.jpg" alt="user">
+                                    </li>
+                                    <li class="get_msg-loaded">
+                                        ofc
+                                    </li>
+                                    <li class="get_msg-time">
+                                        time
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="own_msg flex-right">
+                                <ul class="list post_msg-info">
+                                    <li class="post_msg-time">
+                                        time
+                                    </li>
+                                    <li class="post_msg-loaded">
+                                        ofc
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="type_chat">
+                        <form class="list type_chat-input">
+                            <!-- <label for="img_take" class="icon">
+                                <ion-icon name="image"></ion-icon>
+                            </label> -->
+                            <!-- <input type="file" accept="image/*"  id="img_take"> testing for img as well haven't done this yet @@ -->
+                            <input type="text" id="send_msg" autocomplete="off" placeholder="Aa">
+                            <button type="submit" class="icon">
+                                <ion-icon name="send"></ion-icon>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="list detail_info">
+                    <div class="big-user">
+                        <div class="avatar">
+                            <img src="../../views/img/back_ground.jpg" alt="user"/>
+                        </div>
+                        <h3 class="text-h">
+                            friend-name
+                        </h3>
+                    </div>
+                    <div class="list detail_group">
+                        <div class="detail_group-setting">
+                            <p class="text icon">
+                                Setting
+                                <span class="flex-right">
+                                    <ion-icon name="arrow-dropdown"></ion-icon>
+                                </span>
+                            </p>
+                            <ul class="list detail_chat-setting">
+                                <li class="list setting-color">
+                                    <p class="icon text">
+                                        Color
+                                        <span class="flex-left">
+                                            <ion-icon name="radio-button-on"></ion-icon>
+                                        </span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="detail_group-user">
+                            <p class="icon text">
+                                user who chat here
+                                <span class="flex-right">
+                                    <ion-icon name="arrow-dropdown"></ion-icon>
+                                </span>
+                            </p>
+                            <ul class="list detail_chat-user">
+                                <li class="list friend-name">
+                                    <div class="avatar">
+                                        <img src="../../views/img/back_ground.jpg" alt="user" />
+                                    </div>
+                                    <p class="text">
+                                        Friend name
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </main>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src="./../../views/javasciprt/chat.js"></script>
+        <script src="../../../../../../views/javasciprt/_all_needed_event.js"></script>
+    </body>
+</html>

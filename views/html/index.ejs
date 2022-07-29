@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../views/img/logo.png">
+        <!-- <meta http-equiv= "X-AU-Compatible"> -->
+        <link rel="stylesheet" href="../../views/css/blog.css" type="text/css">
+        <link rel="stylesheet" href="../../views/css/chat.css" type="text/css">
+        <script src="/socket.io/socket.io.js"></script>
+        <title>Blog event ver1.3</title>
+    </head>
+    <body>
+        <%- include('_header_chat') %> 
+        <!-- body -->
+        <main class="flex_mid_none-border">
+            <!-- blog for user to post -->
+            <div class="postey_container">
+                <div class="postey-box">
+                    <form class="postey-border">
+                        <div class="Posted_area">
+                            <textarea id="Posted_text"></textarea>
+                            <div class="Posted_img-show">
+                                <!-- <img src="" alt="user post img"/> -->
+                            </div>
+                        </div>
+                        <div class="click_blog">
+                            <button class="btn_poster posted_img" type="button">
+                                <ion-icon name="photos"></ion-icon>
+                                <span>placing img</span>
+                                <input type ="file" id ="img_select" accept="image/*" />
+                            </button>
+                            <button class="btn_poster posted-send" type="submit">
+                                <ion-icon name="send"></ion-icon>
+                                <span>post</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- showing all the posting by other user -->
+            <section class="blog_container">
+                <!-- contain each poster by other -->
+                <% blog.forEach( poster => { %>
+                    <%# JSON.stringify(poster.user) %> 
+                    <%# console.log(JSON.stringify(poster.date)) %> 
+                    <div class="blog-box">
+                        <div class="blog_border">
+                            <div class="list user_poster">
+                                <div class="list small-user flex-left">
+                                    <div class="avatar">
+                                        <img src="<%= poster.avatar%>" alt="user"/>
+                                    </div>
+                                    <p class="text name" id="<%=  poster.user %>"><%= poster.name %> </p>
+                                    <% if ((JSON.parse(JSON.stringify(data._id)) === JSON.parse(JSON.stringify(poster.user)))) { %>
+                                            
+                                    <% }else{ %>
+                                        <ul class="portal_blog">
+                                            <% 
+                                                let check_fr = false
+                                            %> 
+                                            <% data.friends.forEach(fr => { %>
+                                                <% if (JSON.parse(JSON.stringify(fr.user)) === JSON.parse(JSON.stringify(poster.user))) { %>
+                                                    <li class="fr_info">
+                                                        <a style="color: #E4E6EB;" href="/live/profile/<%= data.name %>/<%= fr.name %>">
+                                                            info
+                                                        </a>
+                                                    </li>
+                                                    <% 
+                                                        check_fr = true
+                                                    %> 
+                                                <% } %>
+                                            <% }) %>
+                                            <% if (check_fr === false) { %>
+                                                <li class="fr_info">
+                                                    <a style="color: #E4E6EB;" href="/live/profile/<%= data.name %>/<%= poster.name %>">
+                                                        info
+                                                    </a>
+                                                </li>
+                                                <li class="adding_fr">
+                                                    adding to be friend
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                    <% } %> 
+                                </div>
+                                <div class="flex-right">
+                                    <h3 class="text time"><%=new Date(poster.date).toLocaleString() %></h3>
+                                </div>
+                            </div>
+                            <div class="blog_area" id="<%= poster._id %>">
+                                <p id="blog-text"><%=  poster.text %> </p>
+                                <div class="blog_img">
+                                    <% poster.picture.forEach(img => { %>
+                                        <img src="<%= img.img %>" alt="<%= poster.name %> img"/>
+                                    <% }) %>
+                                </div>
+                                <div class="list blog_like">
+                                    <% if (poster.like.length <= 0) { %>
+                                        <div class="icon">
+                                            <ion-icon name="thumbs-up"></ion-icon>
+                                        </div>
+                                    <% }else{ %>
+                                        <% let check_con = false %> 
+                                        <span class="number-like"><%= poster.like.length %></span>
+                                        <% poster.like.forEach(li => { %>
+                                            <% if (JSON.parse(JSON.stringify(li.user)) === JSON.parse(JSON.stringify(data._id))) { %>
+                                                <div class="icon liked">
+                                                    <ion-icon name="thumbs-up"></ion-icon>
+                                                </div>
+                                                <% check_con = true %> 
+                                            <% }%>
+                                        <% }) %>
+                                        <% if (check_con === false) { %>
+                                                <div class="icon">
+                                                    <ion-icon name="thumbs-up"></ion-icon>
+                                                </div>
+                                        <% } %>
+                                    <% } %> 
+                                </div>
+                            </div>
+                            
+                            <div class="blog_comment">
+                                <form class="comment_area">
+                                    <div>
+                                        <textarea id="commnet_text"></textarea>
+                                    </div>
+                                    <div class="click_commnet">
+                                        <button class="btn_poster commented-send" type="submit">
+                                            <ion-icon name="send"></ion-icon>
+                                            <span>commnet</span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <ul class="put_area">
+                                    <% poster.comments.forEach(cmn => { %>
+                                        <li class="put_comment"> 
+                                            <div class="list user_comment">
+                                                <div class="list small-user flex-left">
+                                                    <div class="avatar">
+                                                        <img src="<%= cmn.avatar%>" alt="user"/>
+                                                    </div>
+                                                    <p class="text name"><%= cmn.name %> </p>
+                                                    <% if ((JSON.parse(JSON.stringify(data._id)) === JSON.parse(JSON.stringify(cmn.user)))) { %>
+                                            
+                                                    <% }else{ %>
+                                                        <ul class="portal_blog">
+                                                            <% let check_fr = false
+                                                            %> 
+                                                            <% data.friends.forEach(fr => { %>
+                                                                <%#= JSON.parse(JSON.stringify(fr.user)) %> 
+                                                                <% if (JSON.parse(JSON.stringify(fr.user)) === JSON.parse(JSON.stringify(cmn.user))) { %>
+                                                                    <li class="fr_info">
+                                                                        <a style="color: #E4E6EB;" href="/live/profile/<%= data.name %>/<%= fr.name %>">
+                                                                            info
+                                                                        </a>
+                                                                    </li>
+                                                                    <% 
+                                                                        check_fr = true
+                                                                    %> 
+                                                                <% } %>
+                                                            <% }) %>
+                                                                <% if (check_fr === false) { %>
+                                                                    <li class="fr_info">
+                                                                        <a style="color: #E4E6EB;" href="/live/profile/<%= data.name %>/<%= cmn.name %>">
+                                                                            info
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="adding_fr">
+                                                                        adding to be friend
+                                                                    </li>
+                                                                <% } %>
+                                                        </ul>
+                                                    <% } %> 
+                                                </div>
+                                                <div class="flex-right">
+                                                    <h3 class="text time"><%=new Date(cmn.date).toLocaleString()%></h3>
+                                                </div>
+                                            </div>
+                                            <div class="commnet_area" id="<%= cmn._id %>">
+                                                <p class="comment-text"><%= cmn.text %> </p>
+                                            </div>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </section>
+        </main>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src="./../../views/javasciprt/blog.js"></script>
+        <script src="../../../../../../views/javasciprt/_all_needed_event.js"></script>
+    </body>
+</html>

@@ -1,0 +1,192 @@
+<%- include('fr_profile') %> 
+        <section class="user_short_collect">
+            <div>
+                <div class="user_collect">
+                    <div class="button icon">
+                        <a href="/live/profile/<%= data.name %>/<%= friend.name %>">About</a>
+                    </div>
+                    <div class="button icon clicked">
+                        <a href="/live/profile/<%= data.name %>/<%= friend.name %>/about">profile detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class= "profile_detail contain">
+            <div class="profile_group list">
+                <div>
+                    <div class="basic_header">
+                        <h3 class="text-h">gioi thieu</h3>
+                    </div>
+                    <div class="basic_body">
+                        <ul class="basic_body-1lv">
+                            <% if (locals.fr_profile) { %>
+                                <% if (fr_profile.location) { %>
+                                    <li class="basic_body-2lv list" id="location">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="globe"></ion-icon>
+                                            <h3>Vị trí</h3>
+                                        </div>
+                                        <p class="basic_body-txt flex-middle"><%= fr_profile.location %></p>
+                                    </li>
+                                    <% } %>
+                                <% } %>
+                                <% if (locals.fr_profile) { %>
+                                    <% if (fr_profile.status) { %>
+                                        <li class="basic_body-2lv list" id="status">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="person"></ion-icon>
+                                                <h3>Tâm trạng</h3>
+                                            </div>
+                                            <p class="basic_body-txt flex-middle"><%= fr_profile.status %></p>
+                                        </li>
+                                    <% } %>
+                                <% } %>
+                            <% if (locals.fr_profile) { %>
+                                <% if (fr_profile.bio) { %>
+                                    <li class="basic_body-2lv list long" id="bio">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="book"></ion-icon>
+                                            <h3>bio</h3>
+                                        </div>
+                                        <p class="basic_body-txt"><%= fr_profile.bio %></p>
+                                    </li>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="basic_header list">
+                        <h3 class="text-h">social</h3>
+                    </div>
+                <% if (locals.fr_profile) { %>
+                    <% if (fr_profile.social) { %>
+                        <div class="basic_body">
+                            <ul class="basic_body-1lv">
+                                <% if (fr_profile.social.youtube) { %>
+                                    <li class="basic_body-2lv list" id="youtube">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-youtube"></ion-icon>
+                                            <h3>youtube</h3>
+                                        </div>
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= fr_profile.social.youtube  %>" class="link">
+                                                <%= fr_profile.social.youtube  %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                                <% if (fr_profile.social.twitter) { %>
+                                    <li class="basic_body-2lv list" id="twitter">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-twitter"></ion-icon>
+                                            <h3>twitter</h3>
+                                        </div>
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= fr_profile.social.twitter %>" class="link">
+                                                <%= fr_profile.social.twitter %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                                <% if (fr_profile.social.facebook) { %>
+                                    <li class="basic_body-2lv list" id="facebook">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-facebook"></ion-icon>
+                                            <h3>facebook</h3>
+                                        </div>
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= fr_profile.social.facebook %>" class="link">
+                                                <%= fr_profile.social.facebook %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                                <% if (fr_profile.social.linkin) { %>
+                                    <li class="basic_body-2lv list" id="linkin">
+                                        <div class="basic_body-folder list">
+                                            <ion-icon name="logo-linkedin"></ion-icon>
+                                            <h3>linkin</h3>
+                                        </div>
+                                        <p class="basic_body-txt flex-middle">
+                                            <a href="<%= fr_profile.social.linkin %>" class="link">
+                                                <%= fr_profile.social.linkin %>
+                                            </a>
+                                        </p>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                </div>
+                    <% } %>
+                <% } %>
+
+                <div>
+                    <div class="basic_header list">
+                        <h3 class="text-h">education</h3>
+                    </div>
+                    <% if (locals.fr_profile) { %>
+                        <% if (fr_profile.education.length > 0) { %>
+                            <% fr_profile.education.forEach( edu => { %>
+                                <div class="basic_body" id="<%= edu._id %>">
+                                    <ul class="basic_body-1lv">
+                                        <li class="basic_body-2lv list" id="school">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="business"></ion-icon>
+                                                <h3>school</h3>
+                                            </div>
+                                            <p class="basic_body-txt flex-middle"><%= edu.school %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="degree">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="school"></ion-icon>
+                                                <h3>degree</h3>
+                                            </div>
+                                            <p class="basic_body-txt flex-middle"><%= edu.degree %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="fieldofstudy">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="bulb"></ion-icon>
+                                                <h3>field</h3>
+                                            </div>
+                                            <p class="basic_body-txt flex-middle"><%= edu.fieldofstudy %></p>
+                                        </li>
+                                        <li class="basic_body-2lv list" id="date">
+                                            <div class="basic_body-folder list">
+                                                <ion-icon name="calendar"></ion-icon>
+                                                <h3>date</h3>
+                                            </div>
+                                            <p class="basic_body-txt flex-middle">
+                                                <% if (edu.current === false) { %>
+                                                    <%= new Date(edu.from).toLocaleDateString() %> - <%= new Date(edu.to).toLocaleDateString() %>
+                                                <% }else{ %>
+                                                    <%=  new Date(edu.from).toLocaleDateString()%> - <%=new Date(Date.now()).toLocaleDateString() %>
+                                                <% } %>
+                                                 
+                                            </p>
+                                        </li>
+                                        <% if (edu.description) { %>
+                                            <li class="basic_body-2lv list long" id="description">
+                                                <div class="basic_body-folder list">
+                                                    <ion-icon name="book"></ion-icon>
+                                                    <h3>description</h3>
+                                                </div>
+                                                <p class="basic_body-txt"><%= edu.description %></p>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                <% } %>
+                
+            </div>
+        </section>
+    </main>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src="../../../../../../views/javasciprt/fr_profile.js"></script>
+        <script src="../../../../../../views/javasciprt/_all_needed_event.js"></script>
+    </body>
+</html>
