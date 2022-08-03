@@ -279,7 +279,10 @@ router.delete("/comment",async (req,res) =>{
     if(!admin) return res.status(404).render('html/__blackout', {error: "there were no admin on this website"})
 
     try {
-        let changeComm = await Blogs.findOneAndRemove({comments:{$elemMatch: {_id: id}}})
+        let changeComm = await Blogs.findOneAndUpdate(
+            {$pull:{comments:{$elemMatch: {_id: id}}}}
+            ,   {new: true}
+        )
         if(!changeComm) return res.status(400).json({break : "This comment already been deleted"})
         res.json({hi:'ok'})
     } catch (err) {
