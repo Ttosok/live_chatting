@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="http://localhost:7000/views/img/logo.png">
+        <link rel="stylesheet" href="http://localhost:7000/views/css/profile.css" type="text/css">
+        <link rel="stylesheet" href="http://localhost:7000/views/css/chat.css" type="text/css">
+        <script src="/socket.io/socket.io.js"></script>
+        <title>Blog event ver1.3</title>
+    </head>
+    <body>
+        <%- include('_header_chat')  %> 
+        <main class="flex_mid_none-border flex-mid">
+            <section class="user_short-contain contain">
+                <div class="user_short-info">
+                    <div class="user_info">
+                        <div class="avatar_big">
+                            <img src="<%= data.avatar %> " alt="user"/>
+                        </div>
+                        <div class="content_short">
+                            <div class="short_info">
+                                <div class="name-short">
+                                    <h1><%= data.name %></h1> 
+                                </div>
+                                <div class="nickname-short">
+                                    <% if (locals.profile) { %>
+                                        <h3><%= profile.nick_name %></h3> 
+                                    <% } %>
+                                </div>
+                                <div class="friend-short">
+                                    <%= data.friends.length %> bạn bè
+                                </div>
+                                <!-- <div class="test_fr_img" style="height: 100%; width: auto;">
+                                    <% for( let i = 0; i < data.friends.length; i++ ) { %>
+                                        <img width="40px" height="40px" src="<%= data.friends[i].avatar %>">
+                                    <% } %>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="content_setting">
+                            <ul class="setting_short">
+                                <li class="icon note-short">
+                                    make an note
+                                    <div class="Note_popup">
+                                        <div class="popup_content list">
+                                            <% if (locals.profile ) { %>
+                                                <form class="Note_group collect_pop-profile">
+                                                    <div>
+                                                        <div class="Note_header">
+                                                            <h3 class="text-h">Note Make</h3>
+                                                        </div>
+                                                        <div class="Note_area list">
+                                                            <p class="text-h flex-middle">Note :</p>
+                                                            <textarea id="MakeNote_text"></textarea>
+                                                        </div>
+                                                        <div class="click_Note">
+                                                            <button class="icon" type="submit">
+                                                                <ion-icon name="send"></ion-icon>
+                                                                <span>post</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" style="visibility: hidden;"></button>
+                                                </form>
+                                            <% } %> 
+                                            <span class="close">x</span> 
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="icon user-short">
+                                    setting user
+                                    <div class="User_popup">
+                                        <div class="popup_content list">
+                                            <form class="User_group collect_pop-profile">
+                                                <div>
+                                                    <div class="User_header">
+                                                        <h3 class="text-h">User Edit</h3>
+                                                    </div>
+                                                    <div class="User_area">
+                                                        <ul class="User_area_lv1">
+                                                            <li class="User_area_lv2 list" id="email">
+                                                                <div class="User_area-folder">
+                                                                    <h3>Email</h3>
+                                                                    <p class="errors-email errors"></p>
+                                                                </div>
+                                                                <input class="User_area-txt flex-middle" type="email" placeholder="nhập email mới" value="<%= data.email %>">
+                                                            </li>
+                                                            <li class="User_area_lv2 list" id="Oldpassword">
+                                                                <div class="User_area-folder">
+                                                                    <h3>Old Password</h3>
+                                                                    <p class="errors-Oldpass errors"></p>
+                                                                </div>
+                                                                <input class="User_area-txt flex-middle" type="password" value="">
+                                                            </li>
+                                                            <li class="User_area_lv2 list" id="Newpassword">
+                                                                <div class="User_area-folder">
+                                                                    <h3>New Password</h3>
+                                                                    <p class="errors-Newpass errors"></p>
+                                                                </div>
+                                                                <input class="User_area-txt flex-middle" type="password" value="">
+                                                            </li>
+                                                            <li class="User_area_lv2 list" id="avatar">
+                                                                <div class="User_area-folder">
+                                                                    <h3>Avatar</h3>
+                                                                </div>
+                                                                <img class="user_img-edit" src="<%= data.avatar %> ">
+                                                                <input type ="file" id ="img_select" accept="image/*" />
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" style="visibility: hidden;"></button>
+                                            </form>
+                                            <span class="close">x</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+            </section>
+        
