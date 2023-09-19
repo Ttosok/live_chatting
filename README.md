@@ -2,9 +2,9 @@
   -	Fullstack website built in the third year of university.
   - compose of using:
   1. font:
-      -	html, css, javascript.
+      -	html, css, javascript, ejs.
   2. server:
-      -	mongoose.js , socket.io (library/add-on), node.js
+      -	mongoose.js, socket.io (library/add-on), node.js
   3. data
       -	mongodb.
   -	this project collected around 15 pages.
