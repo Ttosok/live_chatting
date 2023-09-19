@@ -2,11 +2,11 @@
   -	Fullstack website built in the third year of university.
   - compose of using:
   1. font:
-      -	html, css, javascript.
+      -	html, css, javascript, [ejs](https://ejs.co/).
   2. server:
-      -	mongoose.js , socket.io (library/add-on), node.js
+      -	[mongoose.js](https://mongoosejs.com/), [socket.io](https://socket.io/) (library/add-on), [node.js](https://nodejs.org/en)
   3. data
-      -	mongodb.
+      -	[mongodb](https://www.mongodb.com/).
   -	this project collected around 15 pages.
   -	The project still have quite some bugs with slow connecting problem of sending infomation
   - This website base on [facebook](https://www.facebook.com/) and [messager](https://www.messenger.com/).
